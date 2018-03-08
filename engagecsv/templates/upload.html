@@ -12,7 +12,7 @@
     <input id="file-picker" type="file" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
 
     <div id="msg"></div>
-    <input type="submit" value="Upload!" id="upload-button">
+    <input type="submit" value="Upload!" id="upload-button" onclick="myfunction()">
 </form>
 </body>
 <script>
@@ -32,6 +32,12 @@
                 document.getElementById("file-picker").value ="";
             }
         }
-    } );
+    }
+    );
+</script>
+<script>
+function myfunction() {
+    document.getElementById("file-picker").required = true;
+}
 </script>
 </html>
