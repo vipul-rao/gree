@@ -19,6 +19,7 @@ def return_file():
 
 @app.route("/upload", methods=['POST'])
 def upload():
+    global new_path
     target = os.path.join(APP__ROOT)
     print(target)
 
@@ -79,6 +80,10 @@ def upload():
     # df = pd.concat([df, df], 1)
     df.to_csv("new.csv",index = False)
     downloadpath = "new.csv"
+
+    os.remove(os.path.abspath(new_path) )
+
+
     return render_template("complete.html", name=downloadpath)
 
 if __name__ == "__main__":
