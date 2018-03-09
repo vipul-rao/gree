@@ -79,11 +79,12 @@ def upload():
 
     # df = pd.concat([df, df], 1)
     df.to_csv("new.csv",index = False)
+    df = pd.read_csv("new.csv", sep=',', encoding="utf-8")
+    df = df[df['Lastname'].notnull()]
+    df.to_csv("new.csv", index=False)
     downloadpath = "new.csv"
-
     os.remove(os.path.abspath(new_path) )
-
-
+    
     return render_template("complete.html", name=downloadpath)
 
 if __name__ == "__main__":
