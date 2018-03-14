@@ -99,7 +99,9 @@ def upload():
             res.append('domain.com')
     df['Domain'] = res
     df.to_csv("new.csv", index=False)
-    downloadpath = "new.csv"
+    df = pd.read_csv("new.csv", sep=',', encoding="utf-8")
+    df = df[df['Domain'] != 'domain.com']
+    df.to_csv("new.csv", index=False)
 
     os.remove(os.path.abspath(new_path) )
 
