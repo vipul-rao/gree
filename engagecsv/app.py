@@ -1,7 +1,11 @@
 import os
 import pandas as pd
-from flask import Flask, render_template, request, send_file
+import clearbit
 import csv
+import json
+from flask import Flask, render_template, request, send_file
+clearbit.key = 'sk_1915de5d2d7b6e245d6613e3d2188368'
+
 app = Flask(__name__)
 
 APP__ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -76,15 +80,30 @@ def upload():
 
     df = df[['Firstname', 'Lastname', 'Email', 'Profile URL', 'Position', 'Company', 'City', 'Country', 'Location']]
     # print (df)
-
     # df = pd.concat([df, df], 1)
     df.to_csv("new.csv",index = False)
     df = pd.read_csv("new.csv", sep=',', encoding="utf-8")
     df = df[df['Lastname'].notnull()]
     df.to_csv("new.csv", index=False)
+    df = pd.read_csv("new.csv", sep=',', encoding="utf-8")
+    saved_column = df['Company'].dropna()
+    i = 0
+    res = []
+    for ddata in saved_column:
+        n = saved_column.get(i)
+        data = clearbit.NameToDomain.find(name=n)
+        i = i + 1
+        if data != None:
+            res.append(data['domain'])
+        else:
+            res.append('domain.com')
+    df['Domain'] = res
+    df.to_csv("new.csv", index=False)
     downloadpath = "new.csv"
+
     os.remove(os.path.abspath(new_path) )
-    
+
+
     return render_template("complete.html", name=downloadpath)
 
 if __name__ == "__main__":
