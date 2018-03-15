@@ -86,6 +86,10 @@ def upload():
         return ''.join(string_list)
     df.Position = df.Position.apply(extract_ascii)
     df.Company = df.Company.apply(extract_ascii)
+    def extract_num(x):
+        string_list = filter(lambda y : ord(y) > 64 , x)
+        return ''.join(string_list)
+    df.Lastname = df.Lastname.apply(extract_num)
     df.to_csv("new.csv",index = False)
     df = pd.read_csv("new.csv", sep=',', encoding="utf-8")
     df = df[df['Lastname'].notnull()]
