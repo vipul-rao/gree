@@ -81,6 +81,11 @@ def upload():
     df = df[['Firstname', 'Lastname', 'Email', 'Profile URL', 'Position', 'Company', 'City', 'Country', 'Location']]
     # print (df)
     # df = pd.concat([df, df], 1)
+    def extract_ascii(x):
+    string_list = filter(lambda y : ord(y) < 128, x)
+    return ''.join(string_list)
+    df.Position = df.Position.apply(extract_ascii)
+    df.Company = df.Company.apply(extract_ascii)
     df.to_csv("new.csv",index = False)
     df = pd.read_csv("new.csv", sep=',', encoding="utf-8")
     df = df[df['Lastname'].notnull()]
