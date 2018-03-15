@@ -84,8 +84,8 @@ def upload():
     def extract_ascii(x):
         string_list = filter(lambda y : ord(y) < 128, x)
         return ''.join(string_list)
-    df.Position = df.Position.apply(extract_ascii)
-    df.Company = df.Company.apply(extract_ascii)
+    #df.Position = df.Position.apply(extract_ascii)
+    #df.Company = df.Company.apply(extract_ascii)
     def extract_num(x):
         string_list = filter(lambda y : ord(y) > 64 , x)
         return ''.join(string_list)
