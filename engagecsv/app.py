@@ -101,7 +101,6 @@ def upload():
     for data in saved_column:
         n = saved_column.get(i)
         ns = len(n.split())
-        print(ns)
         if ns > 4:
             n = 'gjkb g'
         data = clearbit.NameToDomain.find(name=n)
@@ -116,7 +115,6 @@ def upload():
     df.to_csv("new.csv", index=False)
     downloadpath = "new.csv"
     os.remove(os.path.abspath(new_path) )
-
 
     return render_template("complete.html", name=downloadpath)
 
