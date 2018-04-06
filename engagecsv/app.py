@@ -98,16 +98,19 @@ def upload():
     saved_column = df['Company'].dropna()
     i = 0
     res = []
-    for data in saved_column:
+    for data in saved_column:   
         n = saved_column.get(i)
         ns = len(n.split())
         if ns > 4:
-            n = 'never get a domain'
+            n = 'never get a website'
         else:
-            print('nothig')
-        i = i + 1
+            print("a")
+        i = i+1
+        print(n)
         data = clearbit.NameToDomain.find(name=n)
-        if data != None:
+        print("\n")
+        print(data) 
+        if data != None: 
             res.append(data['domain'])
         else:
             res.append('domain.com')
