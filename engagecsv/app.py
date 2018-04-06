@@ -101,7 +101,7 @@ def upload():
     for data in saved_column:
         n = saved_column.get(i)
         ns = len(n.split())
-        if ns > 4:
+        if ns > 6:
             n = 'never get a domain'
         data = clearbit.NameToDomain.find(name=n)
         if data != None:
