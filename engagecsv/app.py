@@ -100,9 +100,7 @@ def upload():
     res = []
     for data in saved_column:   
         n = saved_column.get(i)
-        data = clearbit.NameToDomain.find(name=n)
-        print("\n")
-        print(data) 
+        data = clearbit.NameToDomain.find(name=n) 
         if data != None: 
             res.append(data['domain'])
         else:
