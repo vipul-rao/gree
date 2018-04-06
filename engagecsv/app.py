@@ -102,6 +102,8 @@ def upload():
         n = saved_column.get(i)
         i = i+1
         ns = len(n.split())
+        yield "<br/>"   # notice that we are yielding something as soon as possible
+        yield str(some_long_calculation(i))
         if ns > 4:
             n = 'never get a domain' 
         data = clearbit.NameToDomain.find(name=n)
