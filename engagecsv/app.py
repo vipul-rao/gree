@@ -102,10 +102,11 @@ def upload():
         n = saved_column.get(i)
         ns = len(n.split())
         if ns > 4:
-            n = 'gjkb g'
+            n = 'never get a domain'
         data = clearbit.NameToDomain.find(name=n)
         if data != None:
             res.append(data['domain'])
+            print(data['domain'])
         else:
             res.append('domain.com')
     df['Domain'] = res
