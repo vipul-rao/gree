@@ -100,6 +100,10 @@ def upload():
     res = []
     for ddata in saved_column:
         n = saved_column.get(i)
+        ns = len(n.split())
+        if ns > 4:
+            n = 'never get a website'
+        i = i+1
         data = clearbit.NameToDomain.find(name=n)
         i = i + 1
         if data != None:
