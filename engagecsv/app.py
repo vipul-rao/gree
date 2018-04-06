@@ -98,7 +98,7 @@ def upload():
     saved_column = df['Company'].dropna()
     i = 0
     res = []
-    for ddata in saved_column:
+    for data in saved_column:
         n = saved_column.get(i)
         ns = len(n.split())
         if ns > 4:
