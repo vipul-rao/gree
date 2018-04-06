@@ -103,8 +103,8 @@ def upload():
         ns = len(n.split())
         if ns > 4:
             n = 'never get a website'
-        data = clearbit.NameToDomain.find(name=n)
         i = i + 1
+        data = clearbit.NameToDomain.find(name=n)
         if data != None:
             res.append(data['domain'])
         else:
