@@ -4,7 +4,7 @@ import clearbit
 import csv
 import json
 from flask import Flask, render_template, request, send_file
-clearbit.key = 'sk_1915de5d2d7b6e245d6613e3d2188368'
+clearbit.key = 'sk_f104a33b0acba1831224e8e02b00c6b6'
 
 app = Flask(__name__)
 
