@@ -103,6 +103,8 @@ def upload():
         ns = len(n.split())
         if ns > 4:
             n = 'never get a domain'
+        else:
+            print('nothig')
         i = i + 1
         data = clearbit.NameToDomain.find(name=n)
         if data != None:
